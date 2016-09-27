@@ -1,238 +1,150 @@
 <template name="chat">
-	<div class="chat-container">
-		<nav class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu">
-			<div class="menu-scroll">
-				<div class="menu-top">
-					<div class="menu-top-img">
-						<img src="/daemonite/images/samples/landscape.jpg">
+	<div class="page-brand">
+		<div class="chat-container">
+			<nav class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu">
+				<div class="menu-scroll">
+					<div class="menu-top">
+						<div class="menu-top-img">
+							<img src="daemonite/images/samples/landscape.jpg">
+						</div>
+						<div class="menu-top-info">
+							<ul class="nav nav-list margin-no pull-right user-options">
+								<li class="dropdown">
+									<a class="dropdown-toggle text-black waves-attach" data-toggle="dropdown"><span class="icon">more_vert</span></a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li>
+											<a id="userLogout" class="waves-attach" href="#">
+												<span class="icon margin-right-sm">power_settings_new</span> Logout
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<a class="menu-top-user" href="javascript:void(0)">
+								<span class="avatar avatar-inline margin-right">
+								<img src="{{ myUserData.profile.picture }}"></span>
+								{{ myUserData.username }}
+							</a>
+						</div>
+						<div class="menu-top-info-sub">
+							Last messages
+							<a class="btn btn-flat pull-right" href="http://rockalabs.com/" target="_blank">
+								<img class="icon icon-lg" src="rocka-assets/images/white-transparent-icon.png"> RockaLabs
+							</a>
+						</div>
 					</div>
-					<div class="menu-top-info">
-						<ul class="nav nav-list margin-no pull-right user-options">
-							<li class="dropdown">
-								<a class="dropdown-toggle text-black waves-attach" data-toggle="dropdown"><span class="icon">more_vert</span></a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<a id="userLogout" class="waves-attach" href="javascript:void(0)">
-											<span class="icon margin-right-sm">power_settings_new</span> Logout
-										</a>
-									</li>
-								</ul>
+					<div class="menu-content">
+						<ul class="nav user-chats" id="listLastChats">
+							<li>
+								{{#each chats }}
+									<a class="collapsed waves-attach" href="#ui_menu_extras">
+										{{#with getFriendDataChat usersIds }}
+											<span class="avatar avatar-md">
+												<img src="{{ profile.picture }}">
+											</span>
+
+											<div class="chat-last-msg">
+												<p class="username">{{ username }} <span class="datetime">{{ fromNowDate ../updatedAt }}</span></p>
+												<p class="msg">{{ ../lastMsg }}</p>
+											</div>
+										{{/with}}
+									</a>
+								{{/each}}
 							</li>
 						</ul>
-						<a class="menu-top-user" href="javascript:void(0)">
-							<span class="avatar avatar-inline margin-right">
-							<img src="{{ myUserData.profile.picture }}"></span>
-							{{ myUserData.username }}
-						</a>
-					</div>
-					<div class="menu-top-info-sub">
-						Last messages
-						<a class="btn btn-flat pull-right" href="http://rockalabs.com/" target="_blank">
-							<img class="icon icon-lg" src="/rocka-assets/images/white-transparent-icon.png"> RockaLabs
-						</a>
 					</div>
 				</div>
-				<div class="menu-content">
-					<ul class="nav user-chats">
-						<li>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 1 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 2 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 3 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 4 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 6 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-md">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 7 <span class="datetime">an hour ago</span></p>
-									<p class="msg">Lorem ipsum dolor sit amet, consectetur.</p>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<header class="header header-transparent header-waterfall ui-header">
-			<ul class="nav nav-list pull-left hidden-md hidden-lg">
-				<li>
-					<a data-toggle="menu" href="#ui_menu">
-						<span class="icon icon-lg">menu</span>
+			</nav>
+			<header class="header header-transparent header-waterfall ui-header">
+				<ul class="nav nav-list pull-left hidden-md hidden-lg">
+					<li>
+						<a id="openLeftMenu" data-toggle="menu" href="#ui_menu">
+							<span class="icon icon-lg">menu</span>
+						</a>
+					</li>
+				</ul>
+				{{#with friendChat }}
+					<a class="header-logo header-affix-hide margin-left-no margin-right-no" >
+						<span class="avatar avatar-sm">
+							<img src="{{ profile.picture }}">
+						</span>
+						{{ username }}
 					</a>
-				</li>
-			</ul>
-			<a class="header-logo header-affix-hide margin-left-no margin-right-no" >
-				<span class="avatar avatar-sm">
-					<img src="/daemonite/images/users/avatar-001.jpg">
-				</span>
-				Username
-			</a>
-			<span class="header-logo header-affix hidden-md hidden-lg margin-left-no margin-right-no" data-offset-top="213" data-spy="affix"></span>
-			<span class="header-logo header-affix visible-md-block visible-lg-block margin-right-no" data-offset-top="213" data-spy="affix"></span>
-			<ul class="nav nav-list pull-right">
-				<li>
-					<a data-toggle="menu" href="#ui_menu_profile">
-						<span class="access-hide">John Smith</span>
-						<span class="icon icon-lg">chat</span>
-					</a>
-				</li>
-			</ul>
-		</header>
-		<nav aria-hidden="true" class="menu menu-right" id="ui_menu_profile" tabindex="-1">
-			<div class="menu-scroll">
-				<div class="menu-top">
-					<div class="menu-top-img">
-						<img alt="John Smith" src="/daemonite/images/samples/landscape.jpg">
-					</div>
-					<div class="menu-top-info">
-						<a class="menu-top-user" href="javascript:void(0)">
-							My friends
+				{{/with}}
+				<span class="header-logo header-affix hidden-md hidden-lg margin-left-no margin-right-no" data-offset-top="213" data-spy="affix"></span>
+				<span class="header-logo header-affix visible-md-block visible-lg-block margin-right-no" data-offset-top="213" data-spy="affix"></span>
+				<ul class="nav nav-list pull-right">
+					<li>
+						<a id="openRightMenu" data-toggle="menu" href="#ui_menu_friends">
+							<span class="access-hide">John Smith</span>
+							<span class="icon icon-lg">chat</span>
 						</a>
+					</li>
+				</ul>
+			</header>
+			<nav aria-hidden="true" class="menu menu-right" id="ui_menu_friends" tabindex="-1">
+				<div class="menu-scroll">
+					<div class="menu-top">
+						<div class="menu-top-img">
+							<img alt="John Smith" src="daemonite/images/samples/landscape.jpg">
+						</div>
+						<div class="menu-top-info">
+							<a class="menu-top-user" href="javascript:void(0)">
+								My friends
+							</a>
+						</div>
+						<div class="menu-top-info-sub">
+							Find your friends
+						</div>
 					</div>
-					<div class="menu-top-info-sub">
-						Find your friends
-					</div>
-				</div>
-				<div class="menu-content">
-					<ul class="nav user-chats">
-						<li>
-							{{#each friends }}
-								<a class="collapsed waves-attach" href="#">
-									<span class="avatar avatar-sm">
-										<img src="{{ profile.picture }}">
-									</span>
+					<div class="menu-content">
+						<ul class="nav user-chats" id="listFriends">
+							<li>
+								{{#each friends }}
+									<a class="collapsed waves-attach" href="#">
+										<span class="avatar avatar-sm">
+											<img src="{{ profile.picture }}">
+										</span>
 
-									<div class="chat-last-msg">
-										<p class="username">{{ username }}</p>
-									</div>
-								</a>
-							{{/each}}
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<main class="content chat-content">
-			<div class="chat-messages-wrapper">
-				<div class="chat-messages">
-					<div class="mine-msg has-options">
-						<label class="msg">
-							Hi everybody :D
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="friend-msg has-options">
-						<label class="msg">
-							Hi everybody :D
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="mine-msg has-options">
-						<label class="msg">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="friend-msg has-options">
-						<label class="msg">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="friend-msg has-options">
-						<label class="msg">
-							Hi everybody :D
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="friend-msg has-options">
-						<label class="msg">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
-					</div>
-					<div class="mine-msg has-options">
-						<label class="msg">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							<span class="datetime">19:31</span>
-							<button class="btn btn-flat waves-attach msg-options">
-								<span class="icon">delete</span>
-							</button>
-						</label>
+										<div class="chat-last-msg">
+											<p class="username">{{ username }}</p>
+										</div>
+									</a>
+								{{/each}}
+							</li>
+						</ul>
 					</div>
 				</div>
-			</div>
+			</nav>
+			<main class="content chat-content">
+				<div class="chat-messages-wrapper">
+					<div class="chat-messages">
+						{{#each messages}}
+							<div class="{{#if ownerMsg}}mine-msg has-options{{else}}friend-msg{{/if}}">
+								<label class="msg">
+									{{ text }}
+									<span class="datetime">{{ msgDateFormat createdAt }}</span>
+									{{#if ownerMsg}}
+										<button class="btn btn-flat waves-attach msg-options delete-msg">
+											<span class="icon">delete</span>
+										</button>
+									{{/if}}
+								</label>
+							</div>
+						{{/each}}
+					</div>
+				</div>
 
-			<div class="chat-input">
-				<div class="form-group">
-				    <input id="message" class="form-control" type="text" placeholder="Type your message here">
-				</div>
-			</div>
-		</main>
+				{{#if friendChat }}
+					<div class="chat-input">
+						<form id="chatForm">
+							<div class="form-group">
+							    <input id="message" class="form-control" type="text" placeholder="Type your message here">
+							</div>
+						</form>
+					</div>
+				{{/if}}
+			</main>
+		</div>
 	</div>
 </template>
