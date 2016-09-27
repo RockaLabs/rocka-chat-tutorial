@@ -1,7 +1,17 @@
 <template name="layoutAccount">
-	<p>Header Account</p>
+	<div class="layout-account page-brand has-footer">
+		<header class="header header-brand ui-header">
+			<span class="header-logo">Rocka Chat</span>
+		</header>
 
-	{{>Template.dynamic template=content}}
+    	{{>Template.dynamic template=content}}
 
-	<p>Footer Account</p>
+		<footer class="ui-footer">
+			<div class="container">
+				<a class="btn btn-flat" href="http://rockalabs.com/" target="_blank">
+					<img class="icon icon-lg" src="/rocka-assets/images/favicon.ico"> RockaLabs
+				</a>
+			</div>
+		</footer>
+	</div>
 </template>
