@@ -1,0 +1,255 @@
+/**
+ * Simple rocka chat styles
+ *
+ * author: Sergio Alexander - RockaLabs
+ */
+
+@import "colours";
+@import "mixings";
+@import "vars";
+
+.has-footer {
+	padding-bottom: 36px;
+}
+
+.chat-container {
+	.menu {
+		.menu-scroll {
+			.menu-top {
+				.menu-top-info {
+					.user-options {
+						.dropdown {
+							.dropdown-toggle {
+								min-height: 40px;
+							}
+							.dropdown-menu {
+								padding: 0 !important;
+								li {
+									a {
+										min-height: 36px;
+									}
+								}
+							}
+						}
+					}
+				}
+				.menu-top-info-sub {
+					.btn {
+						margin-top: -9px;
+					}
+				}
+			}
+			.menu-content {
+				padding-top: 0;
+				.user-chats {
+					li {
+						a {
+							display: -webkit-box;
+							display: -webkit-flex;
+							display: -ms-flexbox;
+							display: flex;
+							border-bottom: 1px solid #E3E3E3;
+							padding-top: 10px;
+							padding-bottom: 10px;
+							.avatar {
+								position: absolute;
+								margin-right: 15px;
+							}
+							.chat-last-msg {
+								width: calc(100% - 50px);
+								margin-left: 50px;
+								p {
+									@extend .overflow-ellipsis;
+									margin: 0;
+									&.username {
+										.datetime {
+											float: right;
+											font-size: 12px;
+											font-weight: 300;
+											color: #888888;
+										}
+									}
+									&.msg {
+										font-weight: 300;
+									}
+								}
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		&.menu-right {
+			.menu-scroll {
+				.menu-content {
+					.user-chats {
+						li {
+							a {
+								min-height: 53px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.header {
+		background-color: $brand-color;
+		.header-logo {
+			line-height: 56px;
+			.avatar {
+				margin-right: 10px;
+			}
+		}
+	}
+
+	.chat-content {
+		.chat-messages-wrapper {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 56px);
+			padding-bottom: 57px;
+			margin-top: 56px;
+			background-color: #E7E7E7;
+			// background-image: url($images-dir+'chat-pattern.jpg');
+			.chat-messages {
+				background-color: #E7E7E7;
+				padding-left: 16px;
+				padding-right: 16px;
+				padding-bottom: 57px;
+				.mine-msg, .friend-msg  {
+					margin-top: 15px;
+					margin-bottom: 15px;
+					.msg {
+						position: relative;
+						padding: 6px 80px 6px 12px;
+						border-radius: 7px;
+						font-weight: 400;
+						@include browsers_support(box-shadow, 0 1px 2px rgba(0, 0, 0, 0.15));
+
+						&:before {
+							position: absolute;
+						    bottom: 3px;
+						    width: 12px;
+						    height: 19px;
+						    background-position: 50% 50%;
+						    background-repeat: no-repeat;
+						    background-size: contain;
+						}
+						.datetime {
+							position: absolute;
+							right: 12px;
+							bottom: 4px;
+							font-size: 12px;
+							color: #888888;
+						}
+						.msg-options {
+							display: none;
+							position: absolute;
+    						right: 6px;
+							bottom: 0;
+    						height: 32px;
+    						line-height: 1;
+						}
+					}
+					&.has-options {
+						&:hover {
+							.datetime {
+								display: none;
+							}
+							.msg-options {
+								display: block;
+							}
+						}
+					}
+				}
+				.mine-msg {
+					text-align: right;
+					.msg {
+						background-color: #DCF8C6;
+						&:before {
+							content: "";
+							right: -11px;
+    						background-image: url($images-dir+'message-mine.png');
+						}
+					}
+				}
+				.friend-msg {
+					.msg {
+						background-color: #fff;
+						&:before {
+							content: "";
+							left: -11px;
+    						background-image: url($images-dir+'message-friend.png');
+						}
+					}
+				}
+			}
+		}
+		.chat-input {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			.form-group {
+				background: #f5f5f5;
+				padding: 10px 16px 10px 16px !important;
+				margin: 0;
+				border-top: 1px solid #E7E7E7;
+				.form-control {
+					background: #fff;
+					padding: 0 16px;
+				}
+			}
+		}
+	}
+}
+
+.ui-footer {
+	border-top: 1px solid rgba(0,0,0,.12);
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+@media only screen and (min-width: 992px) {
+	.chat-container {
+		.header {
+			margin-left: 300px !important;
+			.header-logo {
+				padding-left: 16px;
+			}
+		}
+		.menu {
+			&.menu-left {
+				width: 300px !important;
+				.menu-scroll {
+					width: 300px !important;
+				}
+			}
+		}
+		.chat-content {
+			.chat-messages-wrapper {
+				left: 300px;
+				width: calc(100% - 300px);
+				.chat-messages {
+					padding-left: 16px;
+					padding-right: 16px;
+				}
+			}
+			.chat-input {
+				width: calc(100% - 300px);
+    			left: 300px;
+    		}
+    	}
+	}
+}

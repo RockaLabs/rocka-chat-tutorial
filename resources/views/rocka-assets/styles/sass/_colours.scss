@@ -1,0 +1,47 @@
+/**
+ * Simple rocka chat styles
+ *
+ * author: Sergio Alexander (@xergioalex) - RockaLabs
+ */
+
+// basic colours
+$palette-indigo-050:           #e8eaf6;
+$palette-indigo-100:           #c5cae9;
+$palette-indigo-200:           #9fa8da;
+$palette-indigo-300:           #7986cb;
+$palette-indigo-400:           #5c6bc0;
+$palette-indigo-500:           #3f51b5;
+$palette-indigo-600:           #3949ab;
+$palette-indigo-700:           #303f9f;
+$palette-indigo-800:           #283593;
+$palette-indigo-900:           #1a237e;
+$palette-indigo-a100:          #8c9eff;
+$palette-indigo-a200:          #536dfe;
+$palette-indigo-a400:          #3d5afe;
+$palette-indigo-a700:          #304ffe;
+
+$palette-pink-050:             #fce4ec;
+$palette-pink-100:             #f8bbd0;
+$palette-pink-200:             #f48fb1;
+$palette-pink-300:             #f06292;
+$palette-pink-400:             #ec407a;
+$palette-pink-500:             #e91e63;
+$palette-pink-600:             #d81b60;
+$palette-pink-700:             #c2185b;
+$palette-pink-800:             #ad1457;
+$palette-pink-900:             #880e4f;
+$palette-pink-a100:            #ff80ab;
+$palette-pink-a200:            #ff4081;
+$palette-pink-a400:            #f50057;
+$palette-pink-a700:            #c51162;
+
+
+
+// palettes
+$brand-color:                  $palette-indigo-500;
+$brand-color-dark:             $palette-indigo-700;
+$brand-color-light:            $palette-indigo-300;
+
+$brand-color-accent:           $palette-pink-a200;
+$brand-color-accent-dark:      $palette-pink-a400;
+$brand-color-accent-light:     $palette-pink-a100;

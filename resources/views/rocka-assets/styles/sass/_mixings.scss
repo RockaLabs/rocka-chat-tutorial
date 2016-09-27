@@ -1,0 +1,22 @@
+/**
+ * Simple rocka chat styles
+ *
+ * author: Sergio Alexander (@xergioalex) - RockaLabs
+ */
+
+/* Mixing Browsers support */
+@mixin browsers_support($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+// Text overflow ellipsis
+.overflow-ellipsis {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
