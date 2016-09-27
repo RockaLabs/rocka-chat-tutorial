@@ -1,4 +1,4 @@
-![rocka-logo](media/rocka-logo.png) ![rocka-ninja](media/rocka-ninja.png) ![rocka-ninja](media/rocka-ninja.png) ![rocka-ninja](media/rocka-ninja.png)
+![rocka-logo](resources/rocka-logo.png) ![rocka-ninja](resources/rocka-ninja.png) ![rocka-ninja](resources/rocka-ninja.png) ![rocka-ninja](resources/rocka-ninja.png)
 
 # Rocka Live Chat
 -----------------------------

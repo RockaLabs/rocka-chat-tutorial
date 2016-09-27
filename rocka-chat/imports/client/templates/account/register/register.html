@@ -18,11 +18,21 @@
 										</span>
 									</p>
 									<form class="form" id="registerForm">
+										{{#if errors.form }}
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<p class="text-red">{{ errors.form }}</p>
+												</div>
+											</div>
+										{{/if}}
 										<div class="form-group form-group-label">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
 													<label class="floating-label" for="username">Username</label>
 													<input class="form-control" id="username" type="text">
+													{{#if errors.username }}
+														<p class="text-red">{{ errors.username }}</p>
+													{{/if}}
 												</div>
 											</div>
 										</div>
@@ -31,6 +41,9 @@
 												<div class="col-md-10 col-md-push-1">
 													<label class="floating-label" for="password">Password</label>
 													<input class="form-control" id="password" type="password">
+													{{#if errors.password }}
+														<p class="text-red">{{ errors.password }}</p>
+													{{/if}}
 												</div>
 											</div>
 										</div>
