@@ -1,22 +1,16 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+// Startup
+import '/imports/client/startup/boot.js';
 
-import './main.html';
+// Layouts
+import '/imports/client/layouts/layoutAccount/layoutAccount.js';
+import '/imports/client/layouts/layoutApp/layoutApp.js';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+// Templates
+import '/imports/client/templates/account/login/login.js';
+import '/imports/client/templates/account/register/register.js';
+import '/imports/client/templates/app/chat/chat.js';
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+// Routes
+import '/imports/client/routes/routesAccount.js';
+import '/imports/client/routes/routesApp.js';
+import '/imports/client/routes/routesBase.js';

@@ -1,0 +1,2 @@
+// ----- Template -----
+import './layoutApp.html';
