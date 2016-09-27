@@ -12,7 +12,7 @@
 								<a class="dropdown-toggle text-black waves-attach" data-toggle="dropdown"><span class="icon">more_vert</span></a>
 								<ul class="dropdown-menu dropdown-menu-right">
 									<li>
-										<a class="waves-attach" href="javascript:void(0)">
+										<a id="userLogout" class="waves-attach" href="javascript:void(0)">
 											<span class="icon margin-right-sm">power_settings_new</span> Logout
 										</a>
 									</li>
@@ -21,8 +21,8 @@
 						</ul>
 						<a class="menu-top-user" href="javascript:void(0)">
 							<span class="avatar avatar-inline margin-right">
-							<img src="/daemonite/images/users/avatar-001.jpg"></span>
-							My friends
+							<img src="{{ myUserData.profile.picture }}"></span>
+							{{ myUserData.username }}
 						</a>
 					</div>
 					<div class="menu-top-info-sub">
@@ -143,60 +143,17 @@
 				<div class="menu-content">
 					<ul class="nav user-chats">
 						<li>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
+							{{#each friends }}
+								<a class="collapsed waves-attach" href="#">
+									<span class="avatar avatar-sm">
+										<img src="{{ profile.picture }}">
+									</span>
 
-								<div class="chat-last-msg">
-									<p class="username">Username 1</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 2</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 3</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 4</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 6</p>
-								</div>
-							</a>
-							<a class="collapsed waves-attach" href="#ui_menu_extras">
-								<span class="avatar avatar-sm">
-									<img src="/daemonite/images/users/avatar-001.jpg">
-								</span>
-
-								<div class="chat-last-msg">
-									<p class="username">Username 7</p>
-								</div>
-							</a>
+									<div class="chat-last-msg">
+										<p class="username">{{ username }}</p>
+									</div>
+								</a>
+							{{/each}}
 						</li>
 					</ul>
 				</div>
