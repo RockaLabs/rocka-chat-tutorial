@@ -7,7 +7,10 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 var AccountRoutes = FlowRouter.group({
     triggersEnter: [ function(){
-        // Do something
+        // Redirect to home when user logged
+        if (Meteor.userId()) {
+            FlowRouter.go('app.chat');
+        }
     }],
     triggersExit: [ function(){
         // Do something

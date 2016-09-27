@@ -6,7 +6,10 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 var AppRoutes = FlowRouter.group({
     triggersEnter: [ function(){
-        // Do something
+        // Redirect to index when user doesn't exist
+        if (!Meteor.userId()) {
+            FlowRouter.go('account.login');
+        }
     }],
     triggersExit: [ function(){
         // Do something
